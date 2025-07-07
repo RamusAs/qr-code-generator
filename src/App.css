@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background: linear-gradient(120deg, #f0f4f8 0%, #e9eafc 100%);
+  min-height: 100vh;
+  color: #000000;
+}
+
+.app-container {
+  padding: 24px 16px 32px 16px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(80, 80, 180, 0.10);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  color: #3a3a7c;
+  letter-spacing: 1px;
+}
+h2 {
+  color: #4a4a8a;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.qr-form, .qr-customization, .qr-preview, .qr-download {
+  margin-bottom: 28px;
+  background: #f7f8fa;
+  border-radius: 16px;
+  padding: 18px 14px 10px 14px;
+  box-shadow: 0 1px 6px rgba(80,80,180,0.04);
+}
+
+.qr-form label, .qr-customization label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #3a3a7c;
+}
+
+.qr-form input, .qr-form select, .qr-customization input ,.qr-customization select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #cfd8dc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background: #f9fafd;
+  color: #000000;
+  transition: border 0.2s;
+}
+.qr-form input:focus, .qr-form select:focus, .qr-customization input:focus {
+  border: 1.5px solid #6c63ff;
+  outline: none;
+}
+
+.qr-form select {
+  font-weight: 500;
+  background: #f4f6fb;
+  color: #000000;
+}
+
+.qr-download button {
+  background: linear-gradient(90deg, #6c63ff 0%, #4a90e2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-right: 10px;
+  box-shadow: 0 2px 8px rgba(80,80,180,0.08);
+  transition: background 0.2s, transform 0.1s;
+}
+.qr-download button:disabled {
+  background: #cfd8dc;
+  color: #888;
+  cursor: not-allowed;
+}
+.qr-download button:not(:disabled):hover {
+  background: linear-gradient(90deg, #4a90e2 0%, #6c63ff 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.qr-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.qr-preview > div {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 16px rgba(80,80,180,0.10);
+  border-radius: 16px;
+}
+
+.qr-customization {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qr-customization > div {
+  margin-bottom: 8px;
+}
+
+.qr-customization input[type="file"] {
+  background: #f4f6fb;
+  border: none;
+  padding: 0;
+}
+
+.qr-customization img {
+  border-radius: 8px;
+  border: 1.5px solid #cfd8dc;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(80,80,180,0.08);
+}
+.qr-customization button {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.2s;
+}
+.qr-customization button:hover {
+  background: #c0392b;
+}
+
+@media (max-width: 700px) {
+  .app-container {
+    padding: 4px;
+    margin: 0;
+    border-radius: 0;
+  }
+  .qr-customization {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .qr-form, .qr-customization, .qr-preview, .qr-download {
+    padding: 10px 4px 8px 4px;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+}

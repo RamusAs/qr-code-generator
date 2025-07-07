@@ -1,0 +1,10 @@
+{
+  "name": "QR Code Generator",
+  "short_name": "QRGen",
+  "description": "Générez, personnalisez et téléchargez vos QR codes facilement.",
+  
+  "display": "standalone",
+  "background_color": "#f0f4f8",
+  "theme_color": "#6c63ff",
+  "orientation": "portrait"
+} 
