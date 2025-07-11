@@ -109,11 +109,19 @@ h2 {
   box-shadow: 0 2px 16px rgba(80, 80, 180, 0.1);
   border-radius: 16px;
 }
-
+.qr-customization__container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+}
 .qr-customization {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin: "20px 0";
 }
 .qr-customization > div {
   margin-bottom: 8px;
