@@ -1,6 +1,5 @@
-import React from 'react';
-import { SketchPicker } from 'react-color';
-import QRPreview from './QRPreview'
+import { SketchPicker } from "react-color"
+import { QRPreview } from "./QRPreview"
 
 const shapeOptions = [
   { value: "square", label: "Carré" },
@@ -15,6 +14,11 @@ const eyeOptions = [
   { value: "extra-rounded", label: "Très arrondi" },
 ]
 
+const rgbaToHex = ({ r, g, b, a }) =>
+  `#${[r, g, b, Math.round(a * 255)]
+    .map((v) => v.toString(16).padStart(2, "0"))
+    .join("")}`
+
 export const QRCustomization = ({
   customization,
   setCustomization,
@@ -22,8 +26,9 @@ export const QRCustomization = ({
   qrData,
   qrInstance,
 }) => {
+  
   const handleColorChange = (color, type) => {
-    setCustomization({ ...customization, [type]: color.hex })
+    setCustomization({ ...customization, [type]: rgbaToHex(color.rgb) })
   }
 
   const handleChange = (e) => {
@@ -139,5 +144,3 @@ export const QRCustomization = ({
     </div>
   )
 }
-
-export default QRCustomization

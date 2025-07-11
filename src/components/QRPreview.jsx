@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import QRCodeStyling from 'qr-code-styling';
+import { useEffect, useRef } from "react"
+import QRCodeStyling from "qr-code-styling"
 
 const getQrValue = (qrType, qrData) => {
   if (qrType === "url") return qrData.url || ""
@@ -26,7 +26,7 @@ const getQrValue = (qrType, qrData) => {
   return ""
 }
 
-const QRPreview = ({ qrType, qrData, customization, qrInstance }) => {
+export const QRPreview = ({ qrType, qrData, customization, qrInstance }) => {
   const qrRef = useRef()
   const localInstance = useRef()
   const value = getQrValue(qrType, qrData)
@@ -98,10 +98,10 @@ const QRPreview = ({ qrType, qrData, customization, qrInstance }) => {
       <div
         ref={qrRef}
         style={{
-          background: customization.bgColor,
           padding: "30px",
           display: "inline-block",
           borderRadius: 16,
+          padding:"20px",
           minHeight: customization.size,
           minWidth: customization.size,
         }}
@@ -110,5 +110,3 @@ const QRPreview = ({ qrType, qrData, customization, qrInstance }) => {
     </div>
   )
 }
-
-export default QRPreview

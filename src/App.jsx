@@ -1,7 +1,5 @@
-import React, { useState, useRef } from "react"
-import QRForm from "./components/QRForm"
-import QRCustomization from "./components/QRCustomization"
-import QRDownload from "./components/QRDownload"
+import { useState, useRef } from "react"
+import { QRCustomization, QRDownload, QRForm } from "./components"
 import "./App.css"
 
 function App() {
@@ -32,14 +30,14 @@ function App() {
         setCustomization={setCustomization}
         qrType={qrType}
         qrData={qrData}
-        qrInstance={qrInstance.current}
+        qrInstance={qrInstance}
       />
 
       <QRDownload
         qrType={qrType}
         qrData={qrData}
         customization={customization}
-        qrInstance={qrInstance.current}
+        qrInstance={qrInstance}
       />
     </div>
   )
