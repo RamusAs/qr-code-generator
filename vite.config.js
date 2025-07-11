@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+// vite.config.js
+export default {
+  build: {
+    outDir: "dist", // Vérifie que le dossier de sortie est bien 'dist'
+    rollupOptions: {
+      input: "/src/main.jsx", // Vérifie que l'entrée principale du projet est correcte
+    },
+  },
+}

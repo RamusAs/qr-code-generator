@@ -1,18 +1,17 @@
-import { useState, useRef } from 'react'
-import QRForm from './components/QRForm'
-import QRPreview from './components/QRPreview'
-import QRCustomization from './components/QRCustomization'
-import QRDownload from './components/QRDownload'
-import './App.css'
+import React, { useState, useRef } from "react"
+import QRForm from "./components/QRForm"
+import QRCustomization from "./components/QRCustomization"
+import QRDownload from "./components/QRDownload"
+import "./App.css"
 
 function App() {
-  const [qrType, setQrType] = useState('url')
-  const [qrData, setQrData] = useState({})
+  const [qrType, setQrType] = useState("url")
+  const [qrData, setQrData] = useState({ url: "ramuas.com" })
   const [customization, setCustomization] = useState({
-    fgColor: '#000000',
-    bgColor: '#ffffff',
-    shape: 'square',
-    eyeShape: 'square',
+    fgColor: "#000000",
+    bgColor: "#ffffff",
+    shape: "square",
+    eyeShape: "square",
     logo: null,
     margin: 4,
     size: 256,
@@ -20,7 +19,7 @@ function App() {
   const qrInstance = useRef(null)
 
   return (
-    <div className="app-container" >
+    <div className="app-container">
       <h1>Générateur de QR Code</h1>
       <QRForm
         qrType={qrType}

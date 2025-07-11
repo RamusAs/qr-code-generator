@@ -3,114 +3,141 @@ import { SketchPicker } from 'react-color';
 import QRPreview from './QRPreview'
 
 const shapeOptions = [
-  { value: 'square', label: 'Carré' },
-  { value: 'dots', label: 'Rond' },
-  { value: 'extra-rounded', label: 'Très arrondi' },
-  { value: 'classy', label: 'Classy' },
-  { value: 'classy-rounded', label: 'Classy arrondi' },
-];
+  { value: "square", label: "Carré" },
+  { value: "dots", label: "Points" },
+  { value: "extra-rounded", label: "Arrondi" },
+  { value: "classy", label: "Classy" },
+  { value: "classy-rounded", label: "Classy arrondi" },
+]
 const eyeOptions = [
-  { value: 'square', label: 'Carré' },
-  { value: 'dot', label: 'Rond' },
-  { value: 'extra-rounded', label: 'Très arrondi' },
-];
+  { value: "square", label: "Carré" },
+  { value: "dot", label: "Rond" },
+  { value: "extra-rounded", label: "Très arrondi" },
+]
 
-const QRCustomization = ({ customization, setCustomization, qrType, qrData, qrInstance }) => {
+export const QRCustomization = ({
+  customization,
+  setCustomization,
+  qrType,
+  qrData,
+  qrInstance,
+}) => {
   const handleColorChange = (color, type) => {
-    setCustomization({ ...customization, [type]: color.hex });
-  };
+    setCustomization({ ...customization, [type]: color.hex })
+  }
 
   const handleChange = (e) => {
-    setCustomization({ ...customization, [e.target.name]: e.target.value });
-  };
+    setCustomization({ ...customization, [e.target.name]: e.target.value })
+  }
 
   const handleLogoUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
+    const file = e.target.files[0]
+    if (!file) return
+    const reader = new FileReader()
     reader.onload = (ev) => {
-      setCustomization({ ...customization, logo: ev.target.result });
-    };
-    reader.readAsDataURL(file);
-  };
+      setCustomization({ ...customization, logo: ev.target.result })
+    }
+    reader.readAsDataURL(file)
+  }
 
   return (
-    <div className="qr-customization" style={{ margin: '20px 0' }}>
+    <div className="qr-customization" style={{ margin: "20px 0" }}>
       <h2>Personnalisation</h2>
-      <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+      <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
         <div style={{ minWidth: 200 }}>
           <label>Couleur du QR :</label>
           <SketchPicker
             color={customization.fgColor}
-            onChange={color => handleColorChange(color, 'fgColor')}
+            onChange={(color) => handleColorChange(color, "fgColor")}
           />
         </div>
         <div style={{ minWidth: 200 }}>
           <label>Couleur de fond :</label>
           <SketchPicker
             color={customization.bgColor}
-            onChange={color => handleColorChange(color, 'bgColor')}
-          />
-        </div>
-      <div>  <div>
-          <label>Taille (px) :</label>
-          <input
-            type="number"
-            name="size"
-            min={128}
-            max={1024}
-            value={customization.size}
-            onChange={handleChange}
-            style={{ width: 80 }}
+            onChange={(color) => handleColorChange(color, "bgColor")}
           />
         </div>
         <div>
-          <label>Marge (px) :</label>
-          <input
-            type="number"
-            name="margin"
-            min={0}
-            max={64}
-            value={customization.margin}
-            onChange={handleChange}
-            style={{ width: 80 }}
-          />
+          <div>
+            <label>Taille (px) :</label>
+            <input
+              type="number"
+              name="size"
+              min={128}
+              max={512}
+              value={customization.size}
+              onChange={handleChange}
+              style={{ width: 80 }}
+            />
+          </div>
+          <div>
+            <label>Forme des modules :</label>
+            <select
+              name="shape"
+              value={customization.shape || "square"}
+              onChange={handleChange}
+              style={{ width: 100 }}
+            >
+              {shapeOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>Forme des yeux :</label>
+            <select
+              name="eyeShape"
+              value={customization.eyeShape || "square"}
+              onChange={handleChange}
+              style={{ width: 100 }}
+            >
+              {eyeOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>Logo au centre :</label>
+            <input type="file" accept="image/*" onChange={handleLogoUpload} />
+            {customization.logo && (
+              <div style={{ marginTop: 8 }}>
+                <img
+                  src={customization.logo}
+                  alt="Logo"
+                  style={{
+                    width: 40,
+                    height: 40,
+                    objectFit: "contain",
+                    borderRadius: 8,
+                    border: "1px solid #ccc",
+                  }}
+                />
+                <button
+                  onClick={() =>
+                    setCustomization({ ...customization, logo: null })
+                  }
+                  style={{ marginLeft: 8 }}
+                >
+                  Supprimer
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-        <div>
-          <label>Forme des modules :</label>
-          <select name="shape" value={customization.shape || 'square'} onChange={handleChange}>
-            {shapeOptions.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Forme des yeux :</label>
-          <select name="eyeShape" value={customization.eyeShape || 'square'} onChange={handleChange}>
-            {eyeOptions.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Logo au centre :</label>
-          <input type="file" accept="image/*" onChange={handleLogoUpload} />
-          {customization.logo && (
-            <div style={{ marginTop: 8 }}>
-              <img src={customization.logo} alt="Logo" style={{ width: 40, height: 40, objectFit: 'contain', borderRadius: 8, border: '1px solid #ccc' }} />
-              <button onClick={() => setCustomization({ ...customization, logo: null })} style={{ marginLeft: 8 }}>Supprimer</button>
-            </div>
-          )}
-        </div></div>
         <QRPreview
-        qrType={qrType}
-        qrData={qrData}
-        customization={customization}
-        qrInstance={qrInstance}
-      />
+          qrType={qrType}
+          qrData={qrData}
+          customization={customization}
+          qrInstance={qrInstance}
+        />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QRCustomization; 
+export default QRCustomization
