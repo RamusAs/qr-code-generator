@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import { QRCustomization, QRDownload, QRForm } from "./components"
 import "./App.css"
+import logoQR from "../public/assets/logoQR.png"
 
 function App() {
   const [qrType, setQrType] = useState("url")
@@ -18,7 +19,10 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Générateur de QR Code</h1>
+      <div className="header">
+        <img src={logoQR} alt="Logo QR Code" className="header-logo" />
+        <h1 className="header-title">Générateur de QR Code</h1>
+      </div>
       <QRForm
         qrType={qrType}
         setQrType={setQrType}

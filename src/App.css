@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
   background: linear-gradient(120deg, #f0f4f8 0%, #e9eafc 100%);
   min-height: 100vh;
   color: #000000;
@@ -9,7 +9,7 @@ body {
 .app-container {
   padding: 24px 16px 32px 16px;
   background: #fff;
-  box-shadow: 0 4px 32px rgba(80, 80, 180, 0.10);
+  box-shadow: 0 4px 32px rgba(80, 80, 180, 0.1);
 }
 
 h1 {
@@ -26,15 +26,19 @@ h2 {
   margin-top: 24px;
 }
 
-.qr-form, .qr-customization, .qr-preview, .qr-download {
+.qr-form,
+.qr-customization,
+.qr-preview,
+.qr-download {
   margin-bottom: 28px;
   background: #f7f8fa;
   border-radius: 16px;
   padding: 18px 14px 10px 14px;
-  box-shadow: 0 1px 6px rgba(80,80,180,0.04);
+  box-shadow: 0 1px 6px rgba(80, 80, 180, 0.04);
 }
 
-.qr-form label, .qr-customization label {
+.qr-form label,
+.qr-customization label {
   display: block;
   margin-top: 10px;
   margin-bottom: 4px;
@@ -42,7 +46,10 @@ h2 {
   color: #3a3a7c;
 }
 
-.qr-form input, .qr-form select, .qr-customization input ,.qr-customization select {
+.qr-form input,
+.qr-form select,
+.qr-customization input,
+.qr-customization select {
   width: 100%;
   padding: 8px 10px;
   margin-bottom: 10px;
@@ -54,7 +61,9 @@ h2 {
   color: #000000;
   transition: border 0.2s;
 }
-.qr-form input:focus, .qr-form select:focus, .qr-customization input:focus {
+.qr-form input:focus,
+.qr-form select:focus,
+.qr-customization input:focus {
   border: 1.5px solid #6c63ff;
   outline: none;
 }
@@ -76,7 +85,7 @@ h2 {
   cursor: pointer;
   margin-top: 8px;
   margin-right: 10px;
-  box-shadow: 0 2px 8px rgba(80,80,180,0.08);
+  box-shadow: 0 2px 8px rgba(80, 80, 180, 0.08);
   transition: background 0.2s, transform 0.1s;
 }
 .qr-download button:disabled {
@@ -97,7 +106,7 @@ h2 {
 .qr-preview > div {
   margin-top: 8px;
   margin-bottom: 8px;
-  box-shadow: 0 2px 16px rgba(80,80,180,0.10);
+  box-shadow: 0 2px 16px rgba(80, 80, 180, 0.1);
   border-radius: 16px;
 }
 
@@ -120,7 +129,7 @@ h2 {
   border-radius: 8px;
   border: 1.5px solid #cfd8dc;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(80,80,180,0.08);
+  box-shadow: 0 1px 4px rgba(80, 80, 180, 0.08);
 }
 .qr-customization button {
   background: #e74c3c;
@@ -137,6 +146,26 @@ h2 {
   background: #c0392b;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.header-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+.header-title {
+  font-size: 2.2rem;
+  color: #3a3a7c;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
 @media (max-width: 700px) {
   .app-container {
     padding: 4px;
@@ -147,10 +176,23 @@ h2 {
     flex-direction: column;
     gap: 8px;
   }
-  .qr-form, .qr-customization, .qr-preview, .qr-download {
+  .qr-form,
+  .qr-customization,
+  .qr-preview,
+  .qr-download {
     padding: 10px 4px 8px 4px;
   }
   h1 {
+    font-size: 1.3rem;
+  }
+  .header {
+    gap: 8px;
+  }
+  .header-logo {
+    width: 36px;
+    height: 36px;
+  }
+  .header-title {
     font-size: 1.3rem;
   }
 }
