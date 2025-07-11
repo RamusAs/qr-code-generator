@@ -45,13 +45,10 @@ export const QRCustomization = ({
   }, [showFgPicker, showBgPicker])
 
   // Conversion RGBA -> CSS string
-  const rgbaToString = (rgba) => {
-    if (!rgba) return "#000"
-    const { r, g, b, a } = rgba
-    return a === 1 || a === undefined
-      ? `rgb(${r},${g},${b})`
-      : `rgba(${r},${g},${b},${a})`
-  }
+  const rgbaToHex = ({ r, g, b, a }) =>
+    `#${[r, g, b, Math.round(a * 255)]
+      .map((v) => v.toString(16).padStart(2, "0"))
+      .join("")}`
 
   return (
     <div className="qr-customization">
@@ -137,7 +134,7 @@ export const QRCustomization = ({
                   onChange={(color) =>
                     setCustomization({
                       ...customization,
-                      fgColor: color.hex || rgbaToString(color.rgb),
+                      fgColor: rgbaToHex(color.rgb),
                     })
                   }
                   eyeDropper={true}
@@ -172,7 +169,7 @@ export const QRCustomization = ({
                   onChange={(color) =>
                     setCustomization({
                       ...customization,
-                      bgColor: color.hex || rgbaToString(color.rgb),
+                      bgColor: rgbaToHex(color.rgb),
                     })
                   }
                   eyeDropper={true}
